@@ -2,6 +2,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>it.icemangp</groupId>
-    <artifactId>ShakeNetworkLog</artifactId>
+    <artifactId>shakenetworklog</artifactId>
     <version>1.0.0-alpha01</version>
 </project>
