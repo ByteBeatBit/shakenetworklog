@@ -5,4 +5,8 @@
     <groupId>it.icemangp</groupId>
     <artifactId>shakenetworklog</artifactId>
     <version>1.0.0-alpha01</version>
+         
+    <modules>
+        <module>shakenetworklog</module>
+    </modules>
 </project>
