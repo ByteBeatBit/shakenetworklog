@@ -19,11 +19,11 @@
             android:padding="@dimen/snl_padding_xs"
             android:textStyle="bold"
             android:gravity="center"
+            android:textColor="@color/lightTextColor"
             android:background="@color/itemlist_header_background"
             app:layout_constraintEnd_toStartOf="@+id/requestDateTimeTv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/snl_white"
             tools:text="DELETE" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:background="@color/snl_green"
             android:paddingVertical="@dimen/snl_padding_xs"
-            android:textColor="@color/snl_white"
+            android:textColor="@color/success"
             android:textSize="18dp"
             android:gravity="center"
             android:textStyle="bold"
@@ -45,13 +45,14 @@
             android:id="@+id/requestSpeedTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingHorizontal="@dimen/snl_padding_xs"
+            android:layout_marginTop="@dimen/snl_margin_s"
+            android:gravity="center_horizontal"
+            android:textColor="@color/lightTextColor"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/requestMethodTv"
             app:layout_constraintStart_toStartOf="@+id/requestMethodTv"
             app:layout_constraintTop_toBottomOf="@+id/requestStatusTv"
-            tools:text="30000 ms" />
+            tools:text="300 ms" />
 
 
 
@@ -96,7 +97,7 @@
             android:layout_marginStart="@dimen/snl_margin_m"
             android:layout_marginTop="@dimen/snl_margin_m"
             android:ellipsize="end"
-            android:textColor="@color/snl_red"
+            android:textColor="@color/failure"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrierStart"
             app:layout_constraintTop_toBottomOf="@id/requestUrlTv"
