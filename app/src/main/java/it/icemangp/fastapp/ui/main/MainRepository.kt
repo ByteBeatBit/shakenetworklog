@@ -18,9 +18,9 @@ object SampleRepository {
 
     interface StressTestRepo {
         @GET("/search?")
-        fun search(@Query("q") user: String?): Call<String>
+        suspend fun search(@Query("q") user: String?): String
         @GET("/searczzh?")
-        fun searchFail(@Query("q") user: String?): Call<String>
+        suspend fun searchFail(@Query("q") user: String?): String
     }
 
     val retrofit: Retrofit
@@ -53,9 +53,9 @@ object SampleRepository {
         service = retrofit.create(StressTestRepo::class.java)
     }
 
-    fun sampleNetworkCall(word: String): Response<String>? {
+    suspend fun sampleNetworkCall(word: String): String? {
         return try {
-            service.search(word).execute()
+            service.search(word)
         }
         catch (e: Exception) {
             e.printStackTrace()
@@ -63,9 +63,9 @@ object SampleRepository {
         }
     }
 
-    fun sampleFailNetworkCall(word: String): Response<String>? {
+    suspend fun sampleFailNetworkCall(word: String): String? {
         return try {
-            service.searchFail(word).execute()
+            service.searchFail(word)
         }
         catch (e: Exception) {
             e.printStackTrace()
