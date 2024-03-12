@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#092D9A</color>
-    <color name="colorPrimaryVariant">#051B5E</color>
-    <color name="colorOnPrimary">#B3B3B3</color>
+    <color name="colorPrimary">#0834B6</color>
+    <color name="colorPrimaryVariant">#072785</color>
+    <color name="colorOnPrimary">#E1E0E0</color>
+    <color name="colorSecondary">#7C7D7E</color>
+    <color name="colorSecondaryVariant">#535353</color>
+    <color name="colorOnSecondary">#202325</color>
 
-    <color name="defaultBackgroundColor">#232323</color>
-    <color name="titleBackgroundColor">#515151</color>
+    <color name="defaultBackgroundColor">#2D3037</color>
+    <color name="defaultForegroundColor">#BABDC5</color>
+    <color name="titleBackgroundColor">#8F8F8F</color>
 
+    <color name="itemlist_status_back_color_success">#388E3C</color>
+    <color name="itemlist_status_back_color_error">#E64A19</color>
+    <color name="itemlist_status_back_color_failure">#D32F2F</color>
 
-    <color name="success">#209317</color>
-    <color name="error">#DC753D</color>
-    <color name="failure">#C42121</color>
+    <color name="itemlist_status_text_color">#DDDFE3</color>
+
 
     <color name="lightTextColor">#9F9F9F</color>
-    <color name="regularTextColor">#DCDCDC</color>
+    <color name="regularTextColor">#BBBEBF</color>
+
+    <color name="itemlist_header_background">#3B424C</color>
+    <color name="itemlist_time_text">#DDDFE3</color>
+    <color name="itemlist_method_text">#DDDFE3</color>
+
+    <color name="itemlist_background">@color/defaultBackgroundColor</color>
+    <color name="itemlist_url_text">#C6C6CA</color>
+
+
+    <color name="detail_header_title_text">#DDDFE3</color>
+    <color name="detail_header_title_background">#717477</color>
+
+
 </resources>

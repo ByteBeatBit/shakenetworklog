@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="snl_black">#FF000000</color>
     <color name="snl_white">#FFFFFFFF</color>
+
+    <color name="snl_green">#148F14</color>
+    <color name="snl_red">#CF1414</color>
+    <color name="snl_blue">#1212D5</color>
+    <color name="snl_orange">#DC753D</color>
 </resources>

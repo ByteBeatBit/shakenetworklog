@@ -9,7 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/itemlist_background">
 
         <TextView
             android:id="@+id/requestMethodTv"
@@ -19,7 +20,7 @@
             android:padding="@dimen/snl_padding_xs"
             android:textStyle="bold"
             android:gravity="center"
-            android:textColor="@color/lightTextColor"
+            android:textColor="@color/itemlist_method_text"
             android:background="@color/itemlist_header_background"
             app:layout_constraintEnd_toStartOf="@+id/requestDateTimeTv"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,9 +31,9 @@
             android:id="@+id/requestStatusTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/snl_green"
+            android:background="@color/itemlist_status_back_color_success"
             android:paddingVertical="@dimen/snl_padding_xs"
-            android:textColor="@color/success"
+            android:textColor="@color/itemlist_status_text_color"
             android:textSize="18dp"
             android:gravity="center"
             android:textStyle="bold"
@@ -74,7 +75,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:background="@color/itemlist_header_background"
             tools:text="10:10:10.123"
-            android:textColor="@color/snl_white"
+            android:textColor="@color/itemlist_time_text"
             android:textStyle="bold" />
 
         <TextView
@@ -84,7 +85,7 @@
             android:layout_marginStart="@dimen/snl_margin_m"
             android:ellipsize="end"
             android:gravity="center_vertical"
-            android:textColor="@color/snl_black"
+            android:textColor="@color/itemlist_url_text"
             app:layout_constraintBaseline_toBaselineOf="@+id/requestStatusTv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrierStart"
@@ -97,7 +98,7 @@
             android:layout_marginStart="@dimen/snl_margin_m"
             android:layout_marginTop="@dimen/snl_margin_m"
             android:ellipsize="end"
-            android:textColor="@color/failure"
+            android:textColor="@color/itemlist_status_back_color_failure"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrierStart"
             app:layout_constraintTop_toBottomOf="@id/requestUrlTv"

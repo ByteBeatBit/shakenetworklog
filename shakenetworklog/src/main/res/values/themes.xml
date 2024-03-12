@@ -6,14 +6,14 @@
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#7C7D7E</item>
-        <item name="colorSecondaryVariant">#535353</item>
-        <item name="colorOnSecondary">@color/snl_black</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
 
-        <item name="android:textColor">@color/regularTextColor</item>
+        <item name="android:textColor">@color/defaultForegroundColor</item>
         <item name="android:background">@color/defaultBackgroundColor</item>
 
         <item name="colorSurface">?attr/colorPrimaryVariant</item>

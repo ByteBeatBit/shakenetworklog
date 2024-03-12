@@ -17,6 +17,12 @@
             android:orientation="vertical">
 
             <TextView
+                style="@style/ShakeNetworkLog.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/snl_url" />
+
+            <TextView
                 android:id="@+id/networkCallDetailPath"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,6 +49,37 @@
                 style="@style/ShakeNetworkLog.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/snl_view_body" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/requestBodyButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/snl_margin_s"
+                    android:padding="@dimen/snl_padding_m"
+                    android:text="@string/snl_view_body_request" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/responseBodyButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/snl_margin_s"
+                    android:padding="@dimen/snl_padding_m"
+                    android:text="@string/snl_view_body_response" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/ShakeNetworkLog.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/snl_request_header" />
 
             <TextView
@@ -53,19 +90,6 @@
                 android:textIsSelectable="true"
                 tools:text="headers go here" />
 
-            <TextView
-                style="@style/ShakeNetworkLog.Title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/snl_request_body" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/requestBodyButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/snl_margin_s"
-                android:padding="@dimen/snl_padding_m"
-                android:text="@string/snl_view_body" />
 
             <TextView
                 style="@style/ShakeNetworkLog.Title"
@@ -81,19 +105,6 @@
                 android:textIsSelectable="true"
                 tools:text="headers go here" />
 
-            <TextView
-                style="@style/ShakeNetworkLog.Title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/snl_response_body" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/responseBodyButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/snl_margin_s"
-                android:padding="@dimen/snl_padding_m"
-                android:text="@string/snl_view_body" />
 
         </LinearLayout>
 
