@@ -67,16 +67,19 @@
         <TextView
             android:id="@+id/requestDateTimeTv"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/snl_margin_m"
+            android:layout_height="0dp"
+            android:background="@color/itemlist_header_background"
+            android:drawablePadding="8dp"
             android:paddingVertical="@dimen/snl_padding_xs"
+            android:paddingStart="@dimen/snl_margin_m"
+            android:textColor="@color/itemlist_time_text"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_clock"
+            app:layout_constraintBottom_toBottomOf="@+id/requestMethodTv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/barrierStart"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/itemlist_header_background"
-            tools:text="10:10:10.123"
-            android:textColor="@color/itemlist_time_text"
-            android:textStyle="bold" />
+            tools:text="10:10:10 (123)" />
 
         <TextView
             android:id="@+id/requestUrlTv"
