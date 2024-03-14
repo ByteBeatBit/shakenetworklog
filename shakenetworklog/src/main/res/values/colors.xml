@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0834B6</color>
-    <color name="colorPrimaryVariant">#072785</color>
-    <color name="colorOnPrimary">#E1E0E0</color>
-    <color name="colorSecondary">#7C7D7E</color>
-    <color name="colorSecondaryVariant">#535353</color>
-    <color name="colorOnSecondary">#202325</color>
+    <color name="snl_colorPrimary">#0834B6</color>
+    <color name="snl_colorPrimaryVariant">#072785</color>
+    <color name="snl_colorOnPrimary">#E1E0E0</color>
+    <color name="snl_colorSecondary">#7C7D7E</color>
+    <color name="snl_colorSecondaryVariant">#535353</color>
+    <color name="snl_colorOnSecondary">#202325</color>
 
-    <color name="defaultBackgroundColor">#DDDFE3</color>
+    <color name="snl_defaultBackgroundColor">#DDDFE3</color>
     <color name="defaultForegroundColor">#2E3035</color>
     <color name="titleBackgroundColor">#8F8F8F</color>
 
-    <color name="itemlist_status_back_color_success">#1B5E20</color>
-    <color name="itemlist_status_back_color_error">#E65100</color>
-    <color name="itemlist_status_back_color_failure">#B71C1C</color>
+    <color name="snl_itemlist_status_back_color_success">#1B5E20</color>
+    <color name="snl_itemlist_status_back_color_error">#E65100</color>
+    <color name="snl_itemlist_status_back_color_failure">#B71C1C</color>
 
-    <color name="itemlist_status_text_color">#DDDFE3</color>
+    <color name="snl_itemlist_status_text_color">#DDDFE3</color>
 
 
-    <color name="lightTextColor">#9F9F9F</color>
-    <color name="regularTextColor">#151515</color>
+    <color name="snl_lightTextColor">#9F9F9F</color>
+    <color name="snl_regularTextColor">#151515</color>
 
-    <color name="itemlist_header_background">#616B7A</color>
-    <color name="itemlist_time_text">#DDDFE3</color>
-    <color name="itemlist_method_text">#DDDFE3</color>
+    <color name="snl_itemlist_header_background">#616B7A</color>
+    <color name="snl_itemlist_time_text">#DDDFE3</color>
+    <color name="snl_itemlist_method_text">#DDDFE3</color>
 
-    <color name="itemlist_background">@color/defaultBackgroundColor</color>
-    <color name="itemlist_url_text">#2B2B2C</color>
+    <color name="snl_itemlist_background">@color/snl_defaultBackgroundColor</color>
+    <color name="snl_itemlist_url_text">#2B2B2C</color>
 
 
     <color name="detail_header_title_text">#DDDFE3</color>

@@ -2,19 +2,19 @@
     <!-- Base application theme. -->
     <style name="Theme.ShakeNetworkLog" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorPrimary">@color/snl_colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/snl_colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/snl_colorOnPrimary</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/colorSecondary</item>
-        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
-        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorSecondary">@color/snl_colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/snl_colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/snl_colorOnSecondary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
 
         <item name="android:textColor">@color/defaultForegroundColor</item>
-        <item name="android:background">@color/defaultBackgroundColor</item>
+        <item name="android:background">@color/snl_defaultBackgroundColor</item>
 
         <item name="colorSurface">?attr/colorPrimaryVariant</item>
         <item name="colorOnSurface">?attr/colorOnPrimary</item>
