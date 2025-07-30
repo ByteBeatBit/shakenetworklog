@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+    namespace = "it.icemangp.shakenetworklog"
     compileSdk = AppConfig.compileSdkVersion
 
     defaultConfig {
@@ -20,12 +21,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_21.toString()
     }
 
     buildFeatures {
