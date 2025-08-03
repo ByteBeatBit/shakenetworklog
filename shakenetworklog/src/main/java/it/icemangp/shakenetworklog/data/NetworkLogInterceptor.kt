@@ -8,7 +8,7 @@ import java.util.logging.Level
 
 class NetworkLogInterceptor : Interceptor {
 
-    private var level: Level = Level.ALL
+    var level: Level = Level.ALL
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
