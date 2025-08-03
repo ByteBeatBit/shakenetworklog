@@ -6,8 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import it.icemangp.shakenetworklog.R
 import it.icemangp.shakenetworklog.data.ExportType
@@ -18,10 +16,9 @@ import it.icemangp.shakenetworklog.ui.ActivityNetworkCallBodyDetail.Companion.RE
 import it.icemangp.shakenetworklog.ui.utils.FileUtils.shareExportedContent
 import it.icemangp.shakenetworklog.ui.utils.JsonUtils.tryFormattingJson
 import it.icemangp.shakenetworklog.ui.utils.StringUtils.toHtmlString
-import it.icemangp.shakenetworklog.ui.utils.UiUtils
 import java.net.URI
 
-class ActivityNetworkCallDetail : AppCompatActivity() {
+class ActivityNetworkCallDetail : ActivityBaseNetworkLog() {
 
     private var networkCall: NetworkCall? = null
 
@@ -32,27 +29,13 @@ class ActivityNetworkCallDetail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_network_call_detail)
-
-        val toolbar = findViewById<MaterialToolbar>(R.id.mytoolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.apply {
-            setDisplayShowTitleEnabled(true)
-            title = getString(R.string.snl_lib_name)
-        }
-
-        UiUtils.setupStatusBarAppearance(
-            rootView = findViewById(R.id.scrollView),
-            window = this.window,
-            statusBarColorView = findViewById(R.id.statusBarBackground),
-            statusBarColorRes = R.color.colorPrimary
-        )
-
         val networkCallId = intent.getStringExtra(NETWORK_CALL_ID) ?: throw IllegalArgumentException("NETWORK_CALL_ID cannot be null")
         networkCall = NetworkLogManager.findCallWithId(networkCallId)
 
         initUi()
     }
+
+    override fun getLayoutResource() = R.layout.activity_network_call_detail
 
     private fun initUi() {
         initPath()

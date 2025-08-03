@@ -1,8 +1,9 @@
 package it.icemangp.shakenetworklog.ui
 
 import android.os.Bundle
-import android.view.View
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.appbar.MaterialToolbar
 import it.icemangp.shakenetworklog.R
 import it.icemangp.shakenetworklog.ui.utils.UiUtils
 
@@ -11,24 +12,29 @@ abstract class ActivityBaseNetworkLog : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        WindowCompat.setDecorFitsSystemWindows(window, false)
-        setContentView()
-//        applyWindowInsets()
-
-//        UiUtils.applyWindowInsets(getMainView(), this.window, R.color.colorPrimaryVariant)
-//        UiUtils.setStatusBarColor(this.window, ContextCompat.getColor(this, R.color.colorPrimaryVariant))
+        setContentView(getLayoutResource())
+        setupToolbar()
+        setupStatusBarAppearance()
     }
 
-    private fun applyWindowInsets() {
+    private fun setupToolbar() {
+        val toolbar = findViewById<MaterialToolbar>(R.id.mytoolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayShowTitleEnabled(true)
+            title = getString(R.string.snl_lib_name)
+        }
+    }
+
+    private fun setupStatusBarAppearance() {
         UiUtils.setupStatusBarAppearance(
             rootView = findViewById(R.id.main),
             window = this.window,
             statusBarColorView = findViewById(R.id.statusBarBackground),
-            statusBarColorRes = R.color.colorPrimaryVariant
+            statusBarColorRes = R.color.colorPrimary
         )
     }
 
-    abstract fun setContentView()
-    abstract fun getMainView(): View
-
+    @LayoutRes
+    abstract fun getLayoutResource(): Int
 }

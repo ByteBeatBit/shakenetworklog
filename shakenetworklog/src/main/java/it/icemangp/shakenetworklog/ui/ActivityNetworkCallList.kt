@@ -4,43 +4,25 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import it.icemangp.shakenetworklog.R
 import it.icemangp.shakenetworklog.data.NetworkCall
 import it.icemangp.shakenetworklog.data.NetworkLogManager
 import it.icemangp.shakenetworklog.ui.adapter.NetworkCallListAdapter
-import it.icemangp.shakenetworklog.ui.utils.UiUtils
 
-class ActivityNetworkCallList : AppCompatActivity(), NetworkCallListAdapter.ItemClickListener {
+class ActivityNetworkCallList : ActivityBaseNetworkLog(), NetworkCallListAdapter.ItemClickListener {
 
     lateinit var adapter: NetworkCallListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_network_call_list)
-
-        val toolbar = findViewById<MaterialToolbar>(R.id.mytoolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.apply {
-            setDisplayShowTitleEnabled(true)
-            title = getString(R.string.snl_lib_name)
-        }
-
-        UiUtils.setupStatusBarAppearance(
-            rootView = findViewById(R.id.recyclerView),
-            window = this.window,
-            statusBarColorView = findViewById(R.id.statusBarBackground),
-            statusBarColorRes = R.color.colorPrimary
-        )
-
         initUI()
     }
+
+    override fun getLayoutResource() = R.layout.activity_network_call_list
 
     private fun initUI() {
         setupRecyclerView()
