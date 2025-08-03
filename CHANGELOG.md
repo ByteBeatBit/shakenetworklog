@@ -1,5 +1,8 @@
 # Change log
 
-## [1.0.0-alpha01] - 2021-05-22
+## [1.0.0-alpha02] - 2025-08-03
 
-- First implementation
+- Add export feature
+- Fix status bar appearance
+- Update libs versions
+- Fix UI
