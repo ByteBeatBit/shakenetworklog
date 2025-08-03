@@ -11,7 +11,7 @@ abstract class ShakeListener : SensorEventListener {
     private var acceleration = 10f
     private var currentAcceleration = SensorManager.GRAVITY_EARTH
     private var lastAcceleration = SensorManager.GRAVITY_EARTH
-    
+
     private var lastDetectionTimeMillis = 0L
     private val shakeDetectionThresholdMillis = 2500
     private val accelerationThreshold = 12

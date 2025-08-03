@@ -21,4 +21,13 @@
     <color name="snl_blue">#1212D5</color>
     <color name="snl_orange">#DC753D</color>
 
+    <color name="buttonTintColor">#CBCBCB</color>
+
+    <color name="toolbarTextColorPrimary">@color/colorPrimaryVariant</color>
+    <color name="toolbarTextColorSecondary">@color/colorPrimaryVariant</color>
+    <color name="toolbarColorControlNormal">@color/snl_white</color>
+    <color name="toolbarMenuBackground">#E1E0E0</color>
+
+    <color name="networkCallDetailPathColor">@color/colorPrimaryVariant</color>
+
 </resources>

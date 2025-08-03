@@ -2,16 +2,20 @@
 <resources>
     <color name="colorPrimary">#092D9A</color>
     <color name="colorPrimaryVariant">#051B5E</color>
-    <color name="colorOnPrimary">#B3B3B3</color>
+    <color name="colorOnPrimary">#E1E0E0</color>
 
-    <color name="defaultBackgroundColor">#232323</color>
-    <color name="titleBackgroundColor">#515151</color>
-
+    <color name="defaultBackgroundColor">#E1E0E0</color>
+    <color name="titleBackgroundColor">#8F8F8F</color>
 
     <color name="success">#209317</color>
     <color name="error">#DC753D</color>
     <color name="failure">#C42121</color>
 
-    <color name="lightTextColor">#9F9F9F</color>
-    <color name="regularTextColor">#DCDCDC</color>
+    <color name="toolbarTextColorPrimary">@color/snl_white</color>
+    <color name="toolbarTextColorSecondary">@color/snl_white</color>
+    <color name="toolbarColorControlNormal">@color/snl_white</color>
+    <color name="toolbarMenuBackground">#151515</color>
+
+    <color name="networkCallDetailPathColor">@color/snl_white</color>
+
 </resources>

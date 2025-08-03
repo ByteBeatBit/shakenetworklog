@@ -31,7 +31,7 @@ object LibraryVers {
 
     // Networking
     const val retrofitVersion                   = "3.0.0"
-    const val moshiKotlinVersion                = "1.13.0"
+    const val moshiKotlinVersion                = "1.15.2"
     const val httpLoggingInterceptorVersion     = "4.12.0"
 
     // Image loading

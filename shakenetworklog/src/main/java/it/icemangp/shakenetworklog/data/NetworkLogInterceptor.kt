@@ -6,13 +6,12 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 import java.util.logging.Level
 
- class NetworkLogInterceptor : Interceptor {
+class NetworkLogInterceptor : Interceptor {
 
-    var level: Level = Level.ALL
+    private var level: Level = Level.ALL
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
-
         val request = chain.request()
 
         if (level == Level.OFF) {
@@ -28,12 +27,10 @@ import java.util.logging.Level
             NetworkLogManager.addCall(request, e, durationInMillis(start))
             throw e
         }
-
         return response
     }
 
-     private fun durationInMillis(start: Long): Long {
-         return TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start)
-     }
-
+    private fun durationInMillis(start: Long): Long {
+        return TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start)
+    }
 }

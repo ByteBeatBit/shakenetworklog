@@ -10,17 +10,13 @@ class MainViewModel : ViewModel() {
 
     fun startNetworkCall200() {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                MainRepository.sampleNetworkCall("iceman")
-            }
+            withContext(Dispatchers.IO) { MainRepository.sampleNetworkCall("iceman") }
         }
     }
 
     fun startNetworkCall400() {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                MainRepository.sampleNetworkCall("cakjfahfjhfoe")
-            }
+            withContext(Dispatchers.IO) { MainRepository.sampleNetworkCall("cakjfahfjhfoe") }
         }
     }
 }

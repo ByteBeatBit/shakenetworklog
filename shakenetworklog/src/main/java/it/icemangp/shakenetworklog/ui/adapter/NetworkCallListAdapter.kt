@@ -9,23 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import it.icemangp.shakenetworklog.R
 import it.icemangp.shakenetworklog.data.NetworkCall
 
-class NetworkCallListAdapter(var list: List<NetworkCall>, val listener: ItemClickListener) : RecyclerView.Adapter<NetworkCallListAdapter.NetworkCallListViewHolder>() {
+class NetworkCallListAdapter(private var list: List<NetworkCall>, private val listener: ItemClickListener) :
+    RecyclerView.Adapter<NetworkCallListAdapter.NetworkCallListViewHolder>() {
 
     interface ItemClickListener {
         fun onItemClick(item: NetworkCall)
     }
 
     class NetworkCallListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val requestMethodTv    : TextView = view.findViewById(R.id.requestMethodTv)
-        val responseCodeTv     : TextView = view.findViewById(R.id.requestStatusTv)
-        val requestSpeedTv     : TextView = view.findViewById(R.id.requestSpeedTv)
-        val requestUrlTv       : TextView = view.findViewById(R.id.requestUrlTv)
-        val requestExceptionTv : TextView = view.findViewById(R.id.requestExceptionTv)
+        val requestMethodTv: TextView = view.findViewById(R.id.requestMethodTv)
+        val responseCodeTv: TextView = view.findViewById(R.id.requestStatusTv)
+        val requestSpeedTv: TextView = view.findViewById(R.id.requestSpeedTv)
+        val requestUrlTv: TextView = view.findViewById(R.id.requestUrlTv)
+        val requestExceptionTv: TextView = view.findViewById(R.id.requestExceptionTv)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): NetworkCallListViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.view_networklog_list_item, viewGroup, false)
-        val holder =  NetworkCallListViewHolder(view)
+        val holder = NetworkCallListViewHolder(view)
 
         view.setOnClickListener {
             val position = holder.adapterPosition
