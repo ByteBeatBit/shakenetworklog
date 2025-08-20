@@ -13,6 +13,7 @@ plugins {
 }
 
 android {
+    namespace = "it.icemangp.fastapp"
     compileSdk = AppConfig.compileSdkVersion
 
     buildFeatures {

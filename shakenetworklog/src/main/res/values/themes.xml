@@ -15,18 +15,11 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
-
-        <item name="android:textColor">@color/defaultForegroundColor</item>
-        <item name="android:background">@color/snl_defaultBackgroundColor</item>
-
-        <item name="colorSurface">?attr/colorPrimaryVariant</item>
-        <item name="colorOnSurface">?attr/colorOnPrimary</item>
-
-        <item name="actionBarTheme">@style/MyActionBar</item>
     </style>
 
-    <style name="MyActionBar" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="android:background">?attr/colorPrimaryVariant</item>
-        <item name="android:colorForeground">?attr/colorOnPrimary</item>
+    <style name="ToolbarIconTheme" parent="">
+        <item name="android:textColorPrimary">@color/toolbarTextColorPrimary</item>
+        <item name="android:textColorSecondary">@color/toolbarTextColorSecondary</item>
+        <item name="android:colorControlNormal">@color/toolbarColorControlNormal</item>
     </style>
 </resources>

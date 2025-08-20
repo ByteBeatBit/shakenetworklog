@@ -22,7 +22,11 @@ abstract class ActivityBaseNetworkLog : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
             setDisplayShowTitleEnabled(true)
+            setDisplayHomeAsUpEnabled(true)
             title = getString(R.string.snl_lib_name)
+            toolbar.setNavigationOnClickListener {
+                onBackPressedDispatcher.onBackPressed()
+            }
         }
     }
 
@@ -31,7 +35,7 @@ abstract class ActivityBaseNetworkLog : AppCompatActivity() {
             rootView = findViewById(R.id.main),
             window = this.window,
             statusBarColorView = findViewById(R.id.statusBarBackground),
-            statusBarColorRes = R.color.colorPrimary
+            statusBarColorRes = R.color.snl_colorPrimary
         )
     }
 
