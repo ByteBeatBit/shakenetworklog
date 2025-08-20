@@ -2,9 +2,12 @@
 <resources>
     <string name="snl_lib_name" translatable="false">Shake Network Log</string>
 
+    <string name="snl_url">URL</string>
     <string name="snl_overview" translatable="false">SUMMARY</string>
     <string name="snl_request_header" translatable="false">REQUEST HEADERS</string>
     <string name="snl_request_body" translatable="false">REQUEST BODY</string>
+    <string name="snl_view_body_request" translatable="false">REQUEST</string>
+    <string name="snl_view_body_response" translatable="false">RESPONSE</string>
     <string name="snl_view_body" translatable="false">SHOW BODY</string>
     <string name="snl_response_header" translatable="false">RESPONSE HEADERS</string>
     <string name="snl_response_body" translatable="false">RESPONSE BODY</string>

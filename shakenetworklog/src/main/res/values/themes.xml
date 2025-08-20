@@ -2,25 +2,31 @@
     <!-- Base application theme. -->
     <style name="Theme.ShakeNetworkLog" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorPrimary">@color/snl_colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/snl_colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/snl_colorOnPrimary</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#7C7D7E</item>
-        <item name="colorSecondaryVariant">#535353</item>
-        <item name="colorOnSecondary">@color/snl_black</item>
+        <item name="colorSecondary">@color/snl_colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/snl_colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/snl_colorOnSecondary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
         <item name="windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
+
+        <item name="android:textColor">@color/defaultForegroundColor</item>
+        <item name="android:background">@color/snl_defaultBackgroundColor</item>
+
+        <item name="colorSurface">?attr/colorPrimaryVariant</item>
+        <item name="colorOnSurface">?attr/colorOnPrimary</item>
+
+        <item name="actionBarTheme">@style/MyActionBar</item>
     </style>
 
-    <style name="ToolbarIconTheme" parent="">
-        <item name="android:textColorPrimary">@color/toolbarTextColorPrimary</item>
-        <item name="android:textColorSecondary">@color/toolbarTextColorSecondary</item>
-        <item name="android:colorControlNormal">@color/toolbarColorControlNormal</item>
-        <item name="colorSurface">@color/toolbarMenuBackground</item>
+    <style name="MyActionBar" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="android:background">?attr/colorPrimaryVariant</item>
+        <item name="android:colorForeground">?attr/colorOnPrimary</item>
     </style>
 </resources>

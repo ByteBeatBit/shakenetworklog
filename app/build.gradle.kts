@@ -13,7 +13,6 @@ plugins {
 }
 
 android {
-    namespace = "it.icemangp.fastapp"
     compileSdk = AppConfig.compileSdkVersion
 
     buildFeatures {
@@ -130,7 +129,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:${LibraryVers.retrofitVersion}")
     implementation("com.squareup.retrofit2:converter-moshi:${LibraryVers.retrofitVersion}")
     implementation("com.squareup.okhttp3:logging-interceptor:${LibraryVers.httpLoggingInterceptorVersion}")
-    implementation("com.squareup.moshi:moshi-kotlin:${LibraryVers.moshiKotlinVersion}")
+    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
+//    implementation("com.squareup.moshi:moshi-kotlin:${LibraryVers.moshiVersion}")
 
     // Log
     implementation("com.jakewharton.timber:timber:${LibraryVers.timberVersion}")
