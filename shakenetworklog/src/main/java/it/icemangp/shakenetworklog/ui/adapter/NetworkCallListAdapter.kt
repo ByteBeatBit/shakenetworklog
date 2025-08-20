@@ -10,7 +10,8 @@ import it.icemangp.shakenetworklog.R
 import it.icemangp.shakenetworklog.data.NetworkCall
 import java.text.SimpleDateFormat
 
-class NetworkCallListAdapter(var list: List<NetworkCall>, val listener: ItemClickListener) : RecyclerView.Adapter<NetworkCallListAdapter.NetworkCallListViewHolder>() {
+class NetworkCallListAdapter(private var list: List<NetworkCall>, private val listener: ItemClickListener) :
+    RecyclerView.Adapter<NetworkCallListAdapter.NetworkCallListViewHolder>() {
 
     interface ItemClickListener {
         fun onItemClick(item: NetworkCall)
@@ -29,7 +30,7 @@ class NetworkCallListAdapter(var list: List<NetworkCall>, val listener: ItemClic
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): NetworkCallListViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.view_networklog_list_item, viewGroup, false)
-        val holder =  NetworkCallListViewHolder(view)
+        val holder = NetworkCallListViewHolder(view)
 
         view.setOnClickListener {
             val position = holder.adapterPosition

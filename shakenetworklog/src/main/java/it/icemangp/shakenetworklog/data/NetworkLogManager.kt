@@ -20,7 +20,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayDeque
 
-
 object NetworkLogManager {
 
     val data = ArrayDeque<NetworkCall>(50)
@@ -148,7 +147,6 @@ object NetworkLogManager {
     }
 
     private fun bodyFrom(response: Response): String {
-
         val headers = response.headers
         val body = response.body
         return when {
@@ -187,7 +185,6 @@ object NetworkLogManager {
     }
 
     private fun headersFrom(request: Request): Map<String, String> {
-
         val headersMap = mutableMapOf<String, String>()
 
         val requestBody = request.body
@@ -207,7 +204,6 @@ object NetworkLogManager {
                 }
             }
         }
-
         headersMap.putAll(request.headers.toMap())
 
         return headersMap

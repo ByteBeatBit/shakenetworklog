@@ -13,7 +13,12 @@ plugins {
 }
 
 android {
+    namespace = "it.icemangp.fastapp"
     compileSdk = AppConfig.compileSdkVersion
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
         AppConfig.setupAppDefaultConfig(this)
@@ -23,7 +28,7 @@ android {
     val preProdEnv = EnvConfig.buildForPreProdEnv()
     val releaseEnv = EnvConfig.buildForReleaseEnv()
 
-    val javaVersion = JavaVersion.VERSION_1_8
+    val javaVersion = JavaVersion.VERSION_21
 
     signingConfigs {
 //        getByName(debugEnv.variantName) {
@@ -52,8 +57,8 @@ android {
             isDebuggable = true
             isMinifyEnabled = false
             setupApplicationBuildType(this, preProdEnv)
+            matchingFallbacks += listOf(debugEnv.variantName, "")
 //            signingConfig = signingConfigs.getByName(debugEnv.variantName)
-            matchingFallbacks += listOf(debugEnv.variantName)
         }
 
         release {
