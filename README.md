@@ -13,7 +13,7 @@ Few steps: you needs to initialize the library in your custom Application class,
 - Setup project (download the .aar and setup it in your project as a local .aar dependency)
 
 ```
-implementation(files("libs/shakenetworklog-1.0.0-alpha01-release.aar"))
+implementation(files("libs/shakenetworklog-1.0.0-alpha02-release.aar"))
 ```
 
 - Initialize the library (i.e. in your custom Application's onCreate)
@@ -43,7 +43,7 @@ val okHttpClient = OkHttpClient.Builder()
 - Shake your device and you will see the list of your network calls with the related details
 
 # Status
-This is an alpha version (1.0.0-alpha01). Updates will be released periodically with new features and bug fixes.
+This is an alpha version (1.0.0-alpha02). Updates will be released periodically with new features and bug fixes.
 
 # Contribute
 

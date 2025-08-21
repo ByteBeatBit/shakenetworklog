@@ -13,7 +13,12 @@ plugins {
 }
 
 android {
+    namespace = "it.icemangp.fastapp"
     compileSdk = AppConfig.compileSdkVersion
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
         AppConfig.setupAppDefaultConfig(this)
@@ -23,7 +28,7 @@ android {
     val preProdEnv = EnvConfig.buildForPreProdEnv()
     val releaseEnv = EnvConfig.buildForReleaseEnv()
 
-    val javaVersion = JavaVersion.VERSION_1_8
+    val javaVersion = JavaVersion.VERSION_21
 
     signingConfigs {
 //        getByName(debugEnv.variantName) {
@@ -52,8 +57,8 @@ android {
             isDebuggable = true
             isMinifyEnabled = false
             setupApplicationBuildType(this, preProdEnv)
+            matchingFallbacks += listOf(debugEnv.variantName, "")
 //            signingConfig = signingConfigs.getByName(debugEnv.variantName)
-            matchingFallbacks += listOf(debugEnv.variantName)
         }
 
         release {
@@ -125,6 +130,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:${LibraryVers.retrofitVersion}")
     implementation("com.squareup.retrofit2:converter-moshi:${LibraryVers.retrofitVersion}")
     implementation("com.squareup.okhttp3:logging-interceptor:${LibraryVers.httpLoggingInterceptorVersion}")
+    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
 //    implementation("com.squareup.moshi:moshi-kotlin:${LibraryVers.moshiVersion}")
 
     // Log

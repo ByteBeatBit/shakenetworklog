@@ -7,22 +7,24 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
-
-object MainRepository {
+object SampleRepository {
 
     data class Repo(val id: String)
 
-    interface GitHubService {
-        @GET("users/{user}/repos")
-        fun repoList(@Path("user") user: String?): Call<List<Repo>>
+    interface StressTestRepo {
+        @GET("/search?")
+        suspend fun search(@Query("q") user: String?): String
+        @GET("/searczzh?")
+        suspend fun searchFail(@Query("q") user: String?): String
     }
 
     val retrofit: Retrofit
-    val service: GitHubService
+    val service: StressTestRepo
 
 
     init {
@@ -42,17 +44,28 @@ object MainRepository {
         val converterFactory = MoshiConverterFactory.create(moshiBuilder)//.withNullSerialization()
 
         retrofit = Retrofit.Builder()
-            .baseUrl("https://api.github.com/"/*BuildConfig.API_BASE_URL*/)
+            .baseUrl("https://www.google.it/"/*BuildConfig.API_BASE_URL*/)
             .addConverterFactory(converterFactory)
+            .addConverterFactory(ScalarsConverterFactory.create())
             .client(okHttpClient)
             .build()
 
-        service = retrofit.create(GitHubService::class.java)
+        service = retrofit.create(StressTestRepo::class.java)
     }
 
-    fun sampleNetworkCall(user: String): Response<List<Repo>>? {
+    suspend fun sampleNetworkCall(word: String): String? {
         return try {
-            service.repoList(user).execute()
+            service.search(word)
+        }
+        catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    suspend fun sampleFailNetworkCall(word: String): String? {
+        return try {
+            service.searchFail(word)
         }
         catch (e: Exception) {
             e.printStackTrace()

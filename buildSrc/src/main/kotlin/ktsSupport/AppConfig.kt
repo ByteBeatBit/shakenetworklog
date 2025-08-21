@@ -8,9 +8,9 @@ object AppConfig {
 
     private const val applicationId = "it.icemangp.shakenetworklog"
     private const val minSdkVersion = 21
-    private const val targetSdkVersion = 31
+    private const val targetSdkVersion = 35
 
-    const val compileSdkVersion = 31
+    const val compileSdkVersion = 35
 
     private const val versionMajor = 1
     private const val versionMinor = 0

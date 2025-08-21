@@ -1,16 +1,25 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-    <style name="Theme.ShakeNetworkLog" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.ShakeNetworkLog" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#0834B6</item>
-        <item name="colorPrimaryVariant">#06247C</item>
-        <item name="colorOnPrimary">@color/snl_white</item>
+        <item name="colorPrimary">@color/snl_colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/snl_colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/snl_colorOnPrimary</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#7C7D7E</item>
-        <item name="colorSecondaryVariant">#535353</item>
-        <item name="colorOnSecondary">@color/snl_black</item>
+        <item name="colorSecondary">@color/snl_colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/snl_colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/snl_colorOnSecondary</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="ToolbarIconTheme" parent="">
+        <item name="android:textColorPrimary">@color/toolbarTextColorPrimary</item>
+        <item name="android:textColorSecondary">@color/toolbarTextColorSecondary</item>
+        <item name="android:colorControlNormal">@color/toolbarColorControlNormal</item>
     </style>
 </resources>

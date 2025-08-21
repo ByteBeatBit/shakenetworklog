@@ -10,5 +10,4 @@ class MyApplication: Application() {
 
         NetworkLogManager.init(this)
     }
-
 }

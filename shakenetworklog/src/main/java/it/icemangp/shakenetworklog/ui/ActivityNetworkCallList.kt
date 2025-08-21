@@ -13,19 +13,16 @@ import it.icemangp.shakenetworklog.data.NetworkCall
 import it.icemangp.shakenetworklog.data.NetworkLogManager
 import it.icemangp.shakenetworklog.ui.adapter.NetworkCallListAdapter
 
-
-class ActivityNetworkCallList: ActivityBaseNetworkLog(), NetworkCallListAdapter.ItemClickListener {
+class ActivityNetworkCallList : ActivityBaseNetworkLog(), NetworkCallListAdapter.ItemClickListener {
 
     lateinit var adapter: NetworkCallListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_network_call_list)
-
         initUI()
-        setupRecyclerView()
     }
+
+    override fun getLayoutResource() = R.layout.activity_network_call_list
 
     private fun initUI() {
         setupRecyclerView()
@@ -37,22 +34,22 @@ class ActivityNetworkCallList: ActivityBaseNetworkLog(), NetworkCallListAdapter.
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        return when(item.itemId) {
+        return when (item.itemId) {
             R.id.clear -> {
                 NetworkLogManager.data.clear()
                 adapter.updateData(NetworkLogManager.data.toList())
                 Snackbar.make(findViewById(R.id.main), "Clear done!", Snackbar.LENGTH_SHORT).show()
                 true
             }
+
             R.id.refresh -> {
                 adapter.updateData(NetworkLogManager.data.toList())
                 Snackbar.make(findViewById(R.id.main), "Refresh done!", Snackbar.LENGTH_SHORT).show()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
-
     }
 
     private fun setupRecyclerView() {

@@ -2,14 +2,20 @@ package it.icemangp.shakenetworklog.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Spanned
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
-import androidx.core.text.HtmlCompat
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.button.MaterialButton
 import it.icemangp.shakenetworklog.R
+import it.icemangp.shakenetworklog.data.ExportType
 import it.icemangp.shakenetworklog.data.NetworkCall
 import it.icemangp.shakenetworklog.data.NetworkLogManager
-import java.lang.Exception
+import it.icemangp.shakenetworklog.ui.ActivityNetworkCallBodyDetail.Companion.REQUEST
+import it.icemangp.shakenetworklog.ui.ActivityNetworkCallBodyDetail.Companion.RESPONSE
+import it.icemangp.shakenetworklog.ui.utils.FileUtils.shareExportedContent
+import it.icemangp.shakenetworklog.ui.utils.JsonUtils.tryFormattingJson
+import it.icemangp.shakenetworklog.ui.utils.StringUtils.toHtmlString
 import java.net.URI
 
 class ActivityNetworkCallDetail : ActivityBaseNetworkLog() {
@@ -22,13 +28,14 @@ class ActivityNetworkCallDetail : ActivityBaseNetworkLog() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_network_call_detail)
 
         val networkCallId = intent.getStringExtra(NETWORK_CALL_ID) ?: throw IllegalArgumentException("NETWORK_CALL_ID cannot be null")
         networkCall = NetworkLogManager.findCallWithId(networkCallId)
 
         initUi()
     }
+
+    override fun getLayoutResource() = R.layout.activity_network_call_detail
 
     private fun initUi() {
         initPath()
@@ -39,15 +46,30 @@ class ActivityNetworkCallDetail : ActivityBaseNetworkLog() {
     }
 
     private fun initButtons() {
-        val requestBodyButton  = findViewById<MaterialButton>(R.id.requestBodyButton)
+        val requestBodyButton = findViewById<MaterialButton>(R.id.requestBodyButton)
         val responseBodyButton = findViewById<MaterialButton>(R.id.responseBodyButton)
 
-        requestBodyButton.setOnClickListener {
-            openBodyActivity(ActivityNetworkCallBodyDetail.REQUEST)
+        requestBodyButton.apply {
+            isEnabled = isEmptyBody(REQUEST).not()
+            setOnClickListener {
+                openBodyActivity(REQUEST)
+            }
         }
-        responseBodyButton.setOnClickListener {
-            openBodyActivity(ActivityNetworkCallBodyDetail.RESPONSE)
+        responseBodyButton.apply {
+            isEnabled = isEmptyBody(RESPONSE).not()
+            setOnClickListener {
+                openBodyActivity(RESPONSE)
+            }
         }
+    }
+
+    private fun isEmptyBody(bodyType: String): Boolean {
+        val body = when (bodyType) {
+            REQUEST -> networkCall?.requestBody.orEmpty()
+            RESPONSE -> networkCall?.responseBody.orEmpty()
+            else -> ""
+        }
+        return body.isEmpty()
     }
 
     private fun openBodyActivity(type: String) {
@@ -59,49 +81,101 @@ class ActivityNetworkCallDetail : ActivityBaseNetworkLog() {
 
     private fun initRequestHeaders() {
         val requestHeaderContent = findViewById<TextView>(R.id.networkCallDetailRequestHeaderContent)
-        requestHeaderContent.text = toHtmlString(networkCall?.requestHeaders ?: mapOf())
+        requestHeaderContent.text = getHeadersLabel(networkCall?.requestHeaders)
     }
 
     private fun initResponseHeaders() {
         val responseHeaderContent = findViewById<TextView>(R.id.networkCallDetailResponseHeaderContent)
-        responseHeaderContent.text = toHtmlString(networkCall?.responseHeaders ?: mapOf())
+        responseHeaderContent.text = getHeadersLabel(networkCall?.responseHeaders)
     }
+
+    private fun getHeadersLabel(headersMap: Map<String, String>?) =
+        if (headersMap.isNullOrEmpty()) getString(R.string.snl_no_headers_label) else toHtmlString(headersMap)
 
     private fun initOverview() {
         val requestOverviewContent = findViewById<TextView>(R.id.networkCallDetailOverviewContent)
         requestOverviewContent.text = toHtmlString(
             mapOf(
-                "URL"           to (networkCall?.url ?: ""),
-                "Method"        to (networkCall?.method ?: ""),
-                "Response Code" to (networkCall?.responseCode?.toString() ?: ""),
-                "Duration"      to (networkCall?.duration ?: "")
+                "URL" to (networkCall?.url.orEmpty()),
+                "Method" to (networkCall?.method.orEmpty()),
+                "Response Code" to (networkCall?.responseCode?.toString().orEmpty()),
+                "Duration" to (networkCall?.duration.orEmpty())
             )
         )
     }
 
-    private fun initPath() {
-        val url = try {
+    private fun getUriPath(): String? {
+        val uri = try {
             URI(networkCall?.url)
         } catch (e: Exception) {
             null
         }
+        return uri?.path
+    }
+
+    private fun initPath() {
         val networkCallPath = findViewById<TextView>(R.id.networkCallDetailPath)
-        networkCallPath.text = url?.path
+        networkCallPath.text = getUriPath()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.detail_menu, menu)
+        return true
+    }
 
-    private fun toHtmlString(map: Map<String, String>): Spanned {
-        val builder = StringBuilder()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.export -> {
+                showExportDialog()
+                true
+            }
 
-        map.onEachIndexed { index, entry ->
-
-            builder.append("<b>${entry.key}</b>: ${entry.value}")
-            if (index != map.size - 1) builder.append("<br>")
+            else -> super.onOptionsItemSelected(item)
         }
-        return HtmlCompat.fromHtml(
-            builder.toString(),
-            HtmlCompat.FROM_HTML_MODE_COMPACT)
     }
 
+    private fun showExportDialog() {
+        val exportItems = listOf(
+            ExportType.Text(
+                path = getPathText(),
+                overview = getOverviewText(),
+                requestHeaders = getRequestHeadersText(),
+                requestBody = getRequestBodyText(),
+                responseHeaders = getResponseHeadersText(),
+                responseBody = getResponseBodyText()
+            ),
+            ExportType.Html(
+                path = getPathText(),
+                overview = getOverviewText(),
+                requestHeaders = getRequestHeadersText(),
+                requestBody = getRequestBodyText(),
+                responseHeaders = getResponseHeadersText(),
+                responseBody = getResponseBodyText()
+            )
+        )
 
+        val labels = exportItems.map { it.displayName }.toTypedArray()
+
+        AlertDialog.Builder(this)
+            .setTitle("Export as")
+            .setItems(labels) { _, which ->
+                val selected = exportItems[which]
+                shareExportedContent(
+                    activity = this,
+                    fileName = getUriPath() ?: "network_call_details",
+                    data = selected.toFormattedString(getString(R.string.snl_lib_name)),
+                    mimeType = selected.mimeType
+                )
+            }.show()
+    }
+
+    private fun getPathText() = findViewById<TextView>(R.id.networkCallDetailPath).text.toString()
+    private fun getOverviewText() = findViewById<TextView>(R.id.networkCallDetailOverviewContent).text.toString()
+    private fun getRequestHeadersText() = findViewById<TextView>(R.id.networkCallDetailRequestHeaderContent).text.toString()
+    private fun getRequestBodyText() =
+        if (isEmptyBody(REQUEST)) getString(R.string.snl_no_body_request_label) else tryFormattingJson(networkCall?.requestBody.orEmpty())
+
+    private fun getResponseHeadersText() = findViewById<TextView>(R.id.networkCallDetailResponseHeaderContent).text.toString()
+    private fun getResponseBodyText() =
+        if (isEmptyBody(RESPONSE)) getString(R.string.snl_no_body_response_label) else tryFormattingJson(networkCall?.responseBody.orEmpty())
 }

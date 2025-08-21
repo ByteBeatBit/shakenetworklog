@@ -1,21 +1,44 @@
 package it.icemangp.shakenetworklog.ui
 
 import android.os.Bundle
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import it.icemangp.shakenetworklog.data.NetworkLogManager
+import com.google.android.material.appbar.MaterialToolbar
+import it.icemangp.shakenetworklog.R
+import it.icemangp.shakenetworklog.ui.utils.UiUtils
 
+abstract class ActivityBaseNetworkLog : AppCompatActivity() {
 
-open class ActivityBaseNetworkLog: AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        NetworkLogManager.shakeEnabled = false
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//
-//        NetworkLogManager.shakeEnabled = true
-//    }
+        setContentView(getLayoutResource())
+        setupToolbar()
+        setupStatusBarAppearance()
+    }
+
+    private fun setupToolbar() {
+        val toolbar = findViewById<MaterialToolbar>(R.id.mytoolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayShowTitleEnabled(true)
+            setDisplayHomeAsUpEnabled(true)
+            title = getString(R.string.snl_lib_name)
+            toolbar.setNavigationOnClickListener {
+                onBackPressedDispatcher.onBackPressed()
+            }
+        }
+    }
+
+    private fun setupStatusBarAppearance() {
+        UiUtils.setupStatusBarAppearance(
+            rootView = findViewById(R.id.main),
+            window = this.window,
+            statusBarColorView = findViewById(R.id.statusBarBackground),
+            statusBarColorRes = R.color.snl_colorPrimary
+        )
+    }
+
+    @LayoutRes
+    abstract fun getLayoutResource(): Int
 }

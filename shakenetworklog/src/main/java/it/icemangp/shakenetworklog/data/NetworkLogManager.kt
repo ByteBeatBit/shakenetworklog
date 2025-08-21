@@ -16,9 +16,9 @@ import okio.GzipSource
 import java.io.EOFException
 import java.lang.Exception
 import java.net.HttpURLConnection
-import java.util.UUID
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.collections.ArrayDeque
-
 
 object NetworkLogManager {
 
@@ -80,15 +80,27 @@ object NetworkLogManager {
         data.clear()
     }
 
+    private fun parseDateFromHeader(utcDate: String): Date {
+        try {
+            val formatterParser = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US)
+            return formatterParser.parse(utcDate) ?: throw Exception("Failed to parse date $utcDate")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return Date()
+        }
+    }
+
     private fun addResponseToNetworkCall(call: NetworkCall, response: Response): NetworkCall {
         val requestCode = response.code
         val responseHeaders = headersFrom(response)
         val responseBody = bodyFrom(response)
+        val dateTime = parseDateFromHeader(responseHeaders["date"] ?: "")
 
         return call.copy(
             responseCode = requestCode,
             responseHeaders = responseHeaders,
-            responseBody = responseBody
+            responseBody = responseBody,
+            responseHeaderDate = dateTime,
         )
     }
 
@@ -102,7 +114,9 @@ object NetworkLogManager {
             requestBody = bodyFrom(request),
             responseHeaders = mapOf(),
             responseBody = "",
-            exceptionMessage = ""
+            exceptionMessage = "",
+            requestDate = Date(),
+            responseHeaderDate = Date(),
         )
     }
 
@@ -133,7 +147,6 @@ object NetworkLogManager {
     }
 
     private fun bodyFrom(response: Response): String {
-
         val headers = response.headers
         val body = response.body
         return when {
@@ -172,7 +185,6 @@ object NetworkLogManager {
     }
 
     private fun headersFrom(request: Request): Map<String, String> {
-
         val headersMap = mutableMapOf<String, String>()
 
         val requestBody = request.body
@@ -192,7 +204,6 @@ object NetworkLogManager {
                 }
             }
         }
-
         headersMap.putAll(request.headers.toMap())
 
         return headersMap

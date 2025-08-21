@@ -8,36 +8,32 @@
     <color name="snl_colorOnSecondary">#202325</color>
 
     <color name="snl_defaultBackgroundColor">#E1E0E0</color>
-    <color name="defaultForegroundColor">#2E3035</color>
+    <color name="defaultForegroundColor">#BABDC5</color>
     <color name="titleBackgroundColor">#8F8F8F</color>
 
-    <color name="snl_itemlist_status_back_color_success">#1B5E20</color>
-    <color name="snl_itemlist_status_back_color_error">#E65100</color>
-    <color name="snl_itemlist_status_back_color_failure">#B71C1C</color>
+    <color name="snl_itemlist_status_back_color_success">#388E3C</color>
+    <color name="snl_itemlist_status_back_color_error">#E64A19</color>
+    <color name="snl_itemlist_status_back_color_failure">#D32F2F</color>
 
     <color name="snl_itemlist_status_text_color">#DDDFE3</color>
 
     <color name="snl_lightTextColor">#9F9F9F</color>
-    <color name="snl_regularTextColor">#151515</color>
+    <color name="snl_regularTextColor">#BBBEBF</color>
 
-    <color name="snl_itemlist_header_background">#616B7A</color>
+    <color name="snl_itemlist_header_background">#3B424C</color>
     <color name="snl_itemlist_time_text">#DDDFE3</color>
     <color name="snl_itemlist_method_text">#DDDFE3</color>
 
-    <color name="snl_itemlist_url_text">#2B2B2C</color>
+    <color name="snl_itemlist_url_text">#C6C6CA</color>
 
 
     <color name="detail_header_title_text">#DDDFE3</color>
     <color name="detail_header_title_background">#717477</color>
 
-    <color name="snl_white">#FFFFFFFF</color>
-
-    <color name="buttonTintColor">#CBCBCB</color>
-
-    <color name="toolbarTextColorPrimary">@color/snl_colorPrimaryVariant</color>
-    <color name="toolbarTextColorSecondary">@color/snl_colorPrimaryVariant</color>
+    <color name="toolbarTextColorPrimary">@color/snl_white</color>
+    <color name="toolbarTextColorSecondary">@color/snl_white</color>
     <color name="toolbarColorControlNormal">@color/snl_white</color>
-    <color name="toolbarMenuBackground">#E1E0E0</color>
+    <color name="toolbarMenuBackground">#151515</color>
 
-    <color name="networkCallDetailPathColor">@color/snl_colorPrimaryVariant</color>
+    <color name="networkCallDetailPathColor">@color/snl_white</color>
 </resources>
